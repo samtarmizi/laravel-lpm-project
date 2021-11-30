@@ -17,15 +17,17 @@ class TodoController extends Controller
 
     public function index(Request $request)
     {
-        if($request->keyword){
-            $user = auth()->user();
-            $todos = $user->todos()
-                        ->where('title','LIKE','%'.$request->keyword.'%')
-                        ->paginate(3);
-        }else{
-            $user = auth()->user();
-            $todos = $user->todos()->paginate(3);
-        }
+        // if($request->keyword){
+        //     $user = auth()->user();
+        //     $todos = $user->todos()
+        //                 ->where('title','LIKE','%'.$request->keyword.'%')
+        //                 ->paginate(3);
+        // }else{
+        //     $user = auth()->user();
+        //     $todos = $user->todos()->paginate(3);
+        // }
+
+        $todos = Todo::paginate();
 
         return view('todos.index', compact('todos'));
     }
@@ -67,6 +69,8 @@ class TodoController extends Controller
 
     public function show(Todo $todo)
     {
+        $this->authorize('lihat', $todo);
+
         return view('todos.show', compact('todo'));
     }
 

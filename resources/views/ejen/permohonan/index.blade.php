@@ -14,6 +14,8 @@
                     {{ __('Ejen Permohonan Index') }}
 
                     <div class="float-right">
+                        <!-- Ini ialah button -->
+                        <a class="btn btn-link" href="/ejen/cipta-permohonan">+ Cipta</a>
                         <form action="" method="">
                             <div class="input-group">
                                 <input type="text" class="form-control" name="keyword" value="{{ request()->get('keyword') }}">

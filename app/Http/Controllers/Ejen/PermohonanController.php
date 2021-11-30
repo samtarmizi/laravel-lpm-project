@@ -11,7 +11,8 @@ class PermohonanController extends Controller
     public function index()
     {
         // list all authenticate permohonan
-        $senarai_permohonan = auth()->user()->permohonan()->paginate();
+        // $senarai_permohonan = auth()->user()->permohonan()->paginate();
+        $senarai_permohonan = Permohonan::paginate();
 
         return view('ejen.permohonan.index', compact('senarai_permohonan'));
     }
