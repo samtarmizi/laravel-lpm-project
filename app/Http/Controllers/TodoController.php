@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Todo;
 use File;
 use Storage;
+use Mail;
+use App\Mail\TodoCreatedMail;
 
 class TodoController extends Controller
 {
@@ -63,6 +65,9 @@ class TodoController extends Controller
             $todo->attachment = $filename;
             $todo->save();
         }
+
+        // send email to user
+        Mail::to('tarmizi@mizi.my')->send(new TodoCreatedMail($todo));
 
         // return todos index
         return redirect()->to('/todos')->with([
