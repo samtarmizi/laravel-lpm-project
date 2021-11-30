@@ -41,7 +41,7 @@ class TodoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
+            'title' => 'required|unique:todos,title|min:4',
             'description' => 'required|min:10'
         ]);
 

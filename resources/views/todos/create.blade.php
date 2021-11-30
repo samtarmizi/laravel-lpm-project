@@ -28,8 +28,12 @@
                         </div>
                         <div class="form-group">
                             <label>Description</label>
-                            <textarea name="description" class="form-control"></textarea>
+                            <textarea name="description" class="form-control @error('description') is-invalid @enderror"></textarea>
                         </div>
+                        @error('description')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+
                         <div class="form-group">
                             <label>Attachment</label>
                             <input type="file" name="attachment" class="form-control" >
