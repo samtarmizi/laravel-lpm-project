@@ -28,6 +28,7 @@ Route::get('/todos/{todo}', [App\Http\Controllers\TodoController::class, 'show']
 Route::get('/todos/{todo}/edit', [App\Http\Controllers\TodoController::class, 'edit']);
 Route::post('/todos/{todo}/edit', [App\Http\Controllers\TodoController::class, 'update']);
 Route::get('/todos/{todo}/delete', [App\Http\Controllers\TodoController::class, 'delete']);
+Route::get('/todos/{todo}/force-delete', [App\Http\Controllers\TodoController::class, 'forceDelete']);
 
 Route::get('/ejen/senarai-permohonan', [App\Http\Controllers\Ejen\PermohonanController::class,'index']);
 Route::get('/ejen/cipta-permohonan', [App\Http\Controllers\Ejen\PermohonanController::class,'create']);

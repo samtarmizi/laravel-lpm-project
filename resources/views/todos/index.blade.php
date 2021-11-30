@@ -53,6 +53,10 @@
                                         @can('delete', $todo)
                                             <a onclick="return confirm('Are you sure')" class="btn btn-danger" href="/todos/{{ $todo->id}}/delete">Delete</a>
                                         @endcan
+                                        <hr>
+                                        @can('delete', $todo)
+                                            <a onclick="return confirm('Are you sure to force delete')" class="btn btn-danger" href="/todos/{{ $todo->id}}/force-delete">FORCE Delete</a>
+                                        @endcan
                                     </td>
                                 </tr>
                             @endforeach
