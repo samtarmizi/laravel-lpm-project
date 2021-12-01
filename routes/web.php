@@ -33,3 +33,8 @@ Route::get('/todos/{todo}/force-delete', [App\Http\Controllers\TodoController::c
 Route::get('/ejen/senarai-permohonan', [App\Http\Controllers\Ejen\PermohonanController::class,'index']);
 Route::get('/ejen/cipta-permohonan', [App\Http\Controllers\Ejen\PermohonanController::class,'create']);
 Route::post('/ejen/cipta-permohonan', [App\Http\Controllers\Ejen\PermohonanController::class,'store']);
+
+
+Route::get('lembaga-route', function () {
+    return 'this is lembaga route';
+})->middleware(['auth','lp']);
