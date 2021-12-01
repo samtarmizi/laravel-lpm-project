@@ -38,3 +38,57 @@ Route::post('/ejen/cipta-permohonan', [App\Http\Controllers\Ejen\PermohonanContr
 Route::get('lembaga-route', function () {
     return 'this is lembaga route';
 })->middleware(['auth','lp']);
+
+
+Route::get('/get-spm-result', function (Request $request) {
+
+    // get token
+    $response = Http::withOptions(['verify' => false])->post('http://svktot.moe.gov.my/api/auth/login', [
+        'email' => 'amirulhafiz@moe.gov.my',
+        'password' => 'qazwsx123'
+    ]);
+
+    dd($response->body());
+
+    $token = '19|hQ7tZinUuQoxv8ULGvP5iVBXEKuvnWy94Xfebz0X';
+
+
+    //get result
+    $response = Http::withOptions(['verify' => false])->withHeaders([
+        'Authorization' => 'Bearer '.$token,
+        'Accept' => 'application/json'
+    ])->post('https://svktot.moe.gov.my/api/verification/spm', [
+        'tahun' => '2004',
+        'nic' => '871207035096',
+        'akg' => 'JB061A023'
+    ]);
+});
+
+
+Route::get('contoh-api/todos', function () {
+
+    $url = 'https://jsonplaceholder.typicode.com/todos';
+
+    $response = Http::get($url);
+
+    $todos = $response->object();
+
+    return view('api-todos', compact('todos'));
+
+});
+
+Route::get('contoh-api/create-coordinate', function () {
+
+    $url = 'https://api.staging.tarsoft.co/api/coordinates/create';
+
+    $body = [
+        'name' => 'Lembaga 2',
+        'latitude' => 1111,
+        'longitude' => 333
+    ];
+
+    $response = Http::post($url, $body);
+
+    dd($response->object());
+
+});
