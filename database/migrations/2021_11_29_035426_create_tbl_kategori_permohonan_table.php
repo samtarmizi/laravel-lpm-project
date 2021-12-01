@@ -15,6 +15,7 @@ class CreateTblKategoriPermohonanTable extends Migration
     {
         Schema::create('tbl_kategori_permohonan', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->timestamps();
         });
     }
